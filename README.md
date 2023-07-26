@@ -20,3 +20,17 @@ The code would be called like so:
 string stripped = StripCommentsSolution.StripComments("apples, pears # and bananas\ngrapes\nbananas !apples", new [] { "#", "!" })
 // result should == "apples, pears\ngrapes\nbananas"
 ```
+### My solution
+``` C#
+using System.Linq;
+
+public class StripCommentsSolution
+{
+    public static string StripComments(string text, string[] commentSymbols)
+    { 
+        string[] lines = text.Split("\n").Select(str => str.Split(commentSymbols, 0).First().TrimEnd()).ToArray();
+
+        return string.Join("\n", lines);
+    }
+}
+```
